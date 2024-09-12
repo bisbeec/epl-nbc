@@ -141,7 +141,7 @@ body {
 }
 .player-card .player-card-inner .player-card-front .player-image {
   position: absolute;
-  bottom: 20px;
+  bottom: 12px;
   left: 0;
   height: 140px;
   -o-object-fit: cover;
