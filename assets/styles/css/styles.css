@@ -1,0 +1,579 @@
+*, *::before, *::after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  width: 100%;
+}
+
+@-webkit-keyframes opacity141 {
+  0%, 100% {
+    opacity: 1;
+  }
+  5%, 95% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes opacity141 {
+  0%, 100% {
+    opacity: 1;
+  }
+  5%, 95% {
+    opacity: 0.4;
+  }
+}
+@-webkit-keyframes showHideShow {
+  0%, 100% {
+    opacity: 1;
+  }
+  5%, 95% {
+    opacity: 0;
+  }
+}
+@keyframes showHideShow {
+  0%, 100% {
+    opacity: 1;
+  }
+  5%, 95% {
+    opacity: 0;
+  }
+}
+body {
+  height: 100vh;
+  width: 100vw;
+  background-image: url(../../img/city-ground.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Manrope", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.overlay {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.pitch {
+  height: 100%;
+  width: 1200px;
+  position: absolute;
+  left: -1px;
+  background-image: url("../../img/bg-pitch.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+.pitch-grid {
+  width: 100%;
+  height: 100%;
+  padding-inline: 15%;
+  position: absolute;
+}
+
+.player-card {
+  height: 135px;
+  width: 90px;
+  text-align: center;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
+  position: absolute;
+  border-radius: 10px 10px 0 10px;
+  z-index: 1;
+  -webkit-transition: scale 0.5s ease-in-out, translate 0.5s ease-in-out, opacity 0.3s ease-in-out;
+  transition: scale 0.5s ease-in-out, translate 0.5s ease-in-out, opacity 0.3s ease-in-out;
+}
+.player-card .player-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  -webkit-transition: 0.3s rotate ease-in-out;
+  transition: 0.3s rotate ease-in-out;
+}
+.player-card .player-card-inner .player-card-back, .player-card .player-card-inner .player-card-front {
+  position: absolute;
+  border-radius: 10px;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+  background: linear-gradient(75deg, #bc9430 25%, #cd9f35 25% 50%, #bc9430 50% 75%, #cd9f35 75% 100%);
+}
+.player-card .player-card-inner .player-card-back {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.player-card .player-card-inner .player-card-back .back-player-number {
+  font-size: 4rem;
+  translate: 0 -10px;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+}
+.player-card .player-card-inner .player-card-back .player-last-name {
+  position: absolute;
+  bottom: 0;
+  background: #eabc40;
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 5px;
+  border-radius: 0 0 0 10px;
+}
+.player-card .player-card-inner .player-card-front {
+  rotate: y 180deg;
+}
+.player-card .player-card-inner .player-card-front .player-image {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  height: 140px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  z-index: 1;
+  -webkit-transition: 0.3s opacity ease-in-out;
+  transition: 0.3s opacity ease-in-out;
+}
+.player-card .player-card-inner .player-card-front .player-image--base {
+  opacity: 0;
+}
+.player-card .player-card-inner .player-card-front .player-image--featured {
+  opacity: 1;
+}
+.player-card .player-card-inner .player-card-front .flag-image, .player-card .player-card-inner .player-card-front .captain-nationality-wrap {
+  position: absolute;
+  width: 40px;
+  left: -10px;
+  top: 50%;
+  height: 25px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  translate: 0 -50%;
+  z-index: 2;
+  opacity: 1;
+  -webkit-transition: 0.3s opacity ease-in-out;
+  transition: 0.3s opacity ease-in-out;
+}
+.player-card .player-card-inner .player-card-front .captain-nationality-wrap {
+  overflow: hidden;
+  -webkit-transition: none;
+  transition: none;
+  background: #fff;
+}
+.player-card .player-card-inner .player-card-front .captain-nationality-wrap .captain-flag-img {
+  width: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  translate: 0px 0px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.player-card .player-card-inner .player-card-front .captain-nationality-wrap .captain-flag-img img {
+  width: 100%;
+  -webkit-animation: showHideShow 5.5s linear 8s;
+          animation: showHideShow 5.5s linear 8s;
+}
+.player-card .player-card-inner .player-card-front .captain-nationality-wrap .captain-flag-img::after {
+  content: "";
+  position: absolute;
+  right: 0px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  translate: 250px 0;
+  background-image: -webkit-gradient(linear, left top, right top, from(rgba(166, 102, 145, 0)), color-stop(50%, #a66691), color-stop(#628df6), color-stop(80%, #65d8f6), to(transparent));
+  background-image: linear-gradient(90deg, rgba(166, 102, 145, 0), #a66691 50%, #628df6, #65d8f6 80%, transparent);
+}
+@-webkit-keyframes flagOverlay {
+  0% {
+    translate: 250px 0;
+  }
+  100% {
+    translate: 0px 0;
+  }
+}
+@keyframes flagOverlay {
+  0% {
+    translate: 250px 0;
+  }
+  100% {
+    translate: 0px 0;
+  }
+}
+.player-card .player-card-inner .player-card-front .captain-nationality-wrap .captain-bg-img {
+  background-image: url("../../img/captain-loop.webp");
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: 50px center;
+  background-repeat: no-repeat;
+  -webkit-animation: captainLoop 4s linear infinite;
+          animation: captainLoop 4s linear infinite;
+}
+@-webkit-keyframes captainLoop {
+  0% {
+    background-position: 25px center;
+  }
+  100% {
+    background-position: -165px center;
+  }
+}
+@keyframes captainLoop {
+  0% {
+    background-position: 25px center;
+  }
+  100% {
+    background-position: -165px center;
+  }
+}
+.player-card .player-card-inner .player-card-front .captain-nationality-wrap .border {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: -1;
+  background: linear-gradient(80deg, #eafb53, #71f3b3);
+}
+.player-card .player-card-inner .player-card-front .captain-nationality-wrap .border--bottom {
+  top: auto;
+  bottom: 0;
+}
+.player-card .player-card-inner .player-card-front .front-player-number {
+  opacity: 0;
+  position: absolute;
+  color: #bc9430;
+  top: 0;
+  left: 5px;
+  font-size: 2rem;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  -webkit-transition: 0.3s opacity ease-in-out;
+  transition: 0.3s opacity ease-in-out;
+}
+.player-card .player-card-inner .player-card-front .front-player-name-wrap, .player-card .player-card-inner .player-card-front .phase3-name {
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(234, 188, 64, 0)), color-stop(20%, #eabc40));
+  background: linear-gradient(rgba(234, 188, 64, 0) 0%, #eabc40 20%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 0.9rem;
+  border-radius: 0 0 10px 0;
+  z-index: 1;
+  padding-inline: 5px;
+  -webkit-transition: 0.3s opacity ease-in-out;
+  transition: 0.3s opacity ease-in-out;
+}
+.player-card .player-card-inner .player-card-front .front-player-name-wrap {
+  text-align: left;
+}
+.player-card .player-card-inner .player-card-front .phase3-name {
+  opacity: 0;
+}
+
+.pitch-grid .pitch-row {
+  position: absolute;
+  width: 70%;
+  left: 50%;
+  translate: -50%;
+}
+.pitch-grid .pitch-row.phase0 .player-card {
+  scale: 0;
+}
+.pitch-grid .pitch-row.phase1 .player-card {
+  scale: 1;
+  -webkit-transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 2.25s, translate 0.5s ease-in-out;
+  transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 2.25s, translate 0.5s ease-in-out;
+  opacity: 0.5;
+}
+.pitch-grid .pitch-row.phase1:nth-of-type(2) .player-card {
+  -webkit-transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 1.75s;
+  transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 1.75s;
+}
+.pitch-grid .pitch-row.phase1:nth-of-type(3) .player-card {
+  -webkit-transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 1.5s;
+  transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 1.5s;
+}
+.pitch-grid .pitch-row.phase1:nth-of-type(4) .player-card {
+  -webkit-transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 1.25s;
+  transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 1.25s;
+}
+.pitch-grid .pitch-row.phase1:nth-of-type(5) .player-card {
+  -webkit-transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 1s;
+  transition: scale 0.5s ease-in-out, opacity 0.3s ease-in-out 1s;
+}
+.pitch-grid .pitch-row.phase2 {
+  z-index: 1;
+}
+.pitch-grid .pitch-row.phase2 .player-card {
+  scale: 2;
+  opacity: 1;
+}
+.pitch-grid .pitch-row.phase2 .player-card .player-card-inner {
+  rotate: y 180deg;
+}
+.pitch-grid .pitch-row.phase2 .player-card .player-card-inner .front-player-number {
+  opacity: 1;
+}
+.pitch-grid .pitch-row.phase2 .player-card .player-card-inner .player-card-front .captain-nationality-wrap .captain-flag-img::after {
+  -webkit-animation: flagOverlay 0.5s linear 0.6s;
+          animation: flagOverlay 0.5s linear 0.6s;
+}
+.pitch-grid .pitch-row.phase2.pitch-row--goalkeeper .player-card {
+  translate: -50% 150%;
+}
+.pitch-grid .pitch-row.phase3 .player-card {
+  scale: 1;
+  -webkit-animation: opacity141 8s ease-in-out 0.25s;
+          animation: opacity141 8s ease-in-out 0.25s;
+}
+.pitch-grid .pitch-row.phase3 .player-card .player-card-inner {
+  rotate: y 180deg;
+}
+.pitch-grid .pitch-row.phase3 .player-card .player-card-inner .player-card-front .player-image--featured, .pitch-grid .pitch-row.phase3 .player-card .player-card-inner .player-card-front .front-player-name-wrap {
+  opacity: 0;
+}
+.pitch-grid .pitch-row.phase3 .player-card .player-card-inner .player-card-front .player-image--base, .pitch-grid .pitch-row.phase3 .player-card .player-card-inner .player-card-front .flag-image, .pitch-grid .pitch-row.phase3 .player-card .player-card-inner .player-card-front .phase3-name {
+  opacity: 1;
+}
+.pitch-grid .pitch-row.phase3:nth-of-type(2) .player-card {
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+}
+.pitch-grid .pitch-row.phase3:nth-of-type(3) .player-card {
+  -webkit-animation-duration: 4s;
+          animation-duration: 4s;
+}
+.pitch-grid .pitch-row.phase3:nth-of-type(4) .player-card {
+  -webkit-animation-duration: 2s;
+          animation-duration: 2s;
+}
+.pitch-grid .pitch-row.phase3:nth-of-type(5) .player-card {
+  -webkit-animation-duration: 0s;
+          animation-duration: 0s;
+}
+.pitch-grid .pitch-row--goalkeeper .player-card, .pitch-grid .pitch-row--forwards .player-card {
+  left: 50%;
+  translate: -50% 0;
+}
+.pitch-grid .pitch-row--goalkeeper {
+  top: 1em;
+}
+.pitch-grid .pitch-row--defence .player-card, .pitch-grid .pitch-row--midfielders .player-card {
+  left: 0%;
+}
+.pitch-grid .pitch-row--defence .player-card:nth-of-type(2), .pitch-grid .pitch-row--midfielders .player-card:nth-of-type(2) {
+  left: 25%;
+}
+.pitch-grid .pitch-row--defence .player-card:nth-of-type(3), .pitch-grid .pitch-row--midfielders .player-card:nth-of-type(3) {
+  left: auto;
+  right: 25%;
+}
+.pitch-grid .pitch-row--defence .player-card:nth-of-type(4), .pitch-grid .pitch-row--midfielders .player-card:nth-of-type(4) {
+  left: auto;
+  right: 0;
+}
+.pitch-grid .pitch-row--defence {
+  top: 8em;
+}
+.pitch-grid .pitch-row--defence.phase2 .player-card {
+  translate: 0 50%;
+}
+.pitch-grid .pitch-row--midfielders {
+  top: 18.5em;
+}
+.pitch-grid .pitch-row--midfielders.phase2 .player-card {
+  translate: 0 -25%;
+}
+.pitch-grid .pitch-row--forwards {
+  top: 28em;
+}
+.pitch-grid .pitch-row--forwards .player-card {
+  translate: -50% -3em;
+}
+.pitch-grid .pitch-row--forwards.phase2 .player-card {
+  translate: -50% -70%;
+}
+.pitch-grid .pitch-row:nth-child(5) {
+  top: auto;
+  bottom: 0;
+}
+.pitch-grid .pitch-row:nth-child(5) .player-card {
+  top: auto;
+  bottom: 0;
+  left: 50%;
+  translate: -50% 0;
+}
+.pitch-grid .pitch-row:nth-child(5).phase2 .player-card {
+  translate: -50% -120%;
+}
+
+aside {
+  background: linear-gradient(45deg, rgba(234, 188, 64, 0.9) 25%, rgba(205, 159, 53, 0.9) 28% 50%, rgba(234, 188, 64, 0.9) 52% 70%, rgba(205, 159, 53, 0.9) 72% 100%);
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  width: 200px;
+  border-radius: 50px 0 0 50px;
+  z-index: 1;
+}
+aside .position-carousel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: 0;
+  overflow-y: hidden;
+}
+aside .position-carousel .slide {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 1em;
+  overflow: hidden;
+  border-radius: 50px 0 0 50px;
+  -webkit-animation: slideShow 3s forwards ease-in-out 3s;
+          animation: slideShow 3s forwards ease-in-out 3s;
+}
+aside .position-carousel .slide::before {
+  content: "";
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(166, 102, 145, 0)), color-stop(20%, #a66691), color-stop(#628df6), color-stop(#65d8f6), to(transparent));
+  background: linear-gradient(rgba(166, 102, 145, 0), #a66691 20%, #628df6, #65d8f6, transparent);
+  position: absolute;
+  background-position: center;
+  inset: 0;
+  width: 100%;
+  height: 200%;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  -webkit-animation: slideAnimate 0.5s forwards ease-in-out 3s;
+          animation: slideAnimate 0.5s forwards ease-in-out 3s;
+}
+@-webkit-keyframes slideAnimate {
+  0% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  100% {
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+}
+@keyframes slideAnimate {
+  0% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  100% {
+    -webkit-transform: translateY(50%);
+            transform: translateY(50%);
+  }
+}
+aside .position-carousel .slide h1 {
+  font-size: 5rem;
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+@-webkit-keyframes slideShow {
+  0% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  10%, 50%, 65% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+  }
+  70%, 100% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    opacity: 0;
+  }
+}
+@keyframes slideShow {
+  0% {
+    -webkit-transform: translateY(-100%);
+            transform: translateY(-100%);
+  }
+  10%, 50%, 65% {
+    -webkit-transform: translateY(0%);
+            transform: translateY(0%);
+    opacity: 1;
+  }
+  70%, 100% {
+    -webkit-transform: translateY(100%);
+            transform: translateY(100%);
+    opacity: 0;
+  }
+}
+aside .position-carousel .slide:nth-of-type(2) {
+  -webkit-animation-delay: 5s;
+          animation-delay: 5s;
+}
+aside .position-carousel .slide:nth-of-type(2)::before {
+  -webkit-animation-delay: 4.95s;
+          animation-delay: 4.95s;
+}
+aside .position-carousel .slide:nth-of-type(3) {
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
+aside .position-carousel .slide:nth-of-type(3)::before {
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
+aside .position-carousel .slide:nth-of-type(4) {
+  -webkit-animation-delay: 9s;
+          animation-delay: 9s;
+}
+aside .position-carousel .slide:nth-of-type(4)::before {
+  -webkit-animation-delay: 9s;
+          animation-delay: 9s;
+}
+aside img {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: -75px;
+  width: 150px;
+}

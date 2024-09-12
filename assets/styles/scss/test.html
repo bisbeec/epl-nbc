@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Change Animation</title>
+    <style>
+        #colorBlock {
+            width: 200px;               /* Width of the block */
+            height: 200px;              /* Height of the block */
+            background-color: red;      /* Initial color */
+            transition: background-color 1s; /* Smooth transition */
+        }
+
+        .phase1 {
+            background-color: green !important;    /* First phase color */
+        }
+
+        .phase2 {
+            background-color: blue !important;      /* Second phase color */
+        }
+    </style>
+</head>
+<body>
+
+<div id="colorBlock"></div>
+
+<script>
+    function changeColor() {
+        var block = document.getElementById('colorBlock');
+        
+        // Phase 1: Change to green after 3 seconds
+        setTimeout(function() {
+            block.classList.add('phase1'); // Add first class after 3 seconds
+        }, 3000);
+
+        // Phase 2: Change to blue after 7 seconds
+        setTimeout(function() {
+            block.classList.remove('phase1'); // Remove first class
+            block.classList.add('phase2');    // Add second class after 7 seconds
+        }, 7000);
+
+        // Reset back to red after 10 seconds
+        setTimeout(function() {
+            block.classList.remove('phase2'); // Remove second class after 10 seconds
+            block.style.backgroundColor = 'red'; // Reset to red
+        }, 10000);
+    }
+
+    changeColor(); // Call the function to start the animation
+</script>
+
+</body>
+</html>
