@@ -132,8 +132,8 @@ body {
   bottom: 0;
   background: #eabc40;
   width: 100%;
-  font-size: 0.9rem;
-  padding: 5px;
+  font-size: 0.7rem;
+  padding: 5px 3px;
   border-radius: 0 0 0 10px;
 }
 .player-card .player-card-inner .player-card-front {
@@ -283,18 +283,24 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  font-size: 0.9rem;
   border-radius: 0 0 10px 0;
   z-index: 1;
-  padding-inline: 5px;
+  padding-inline: 3px;
   -webkit-transition: 0.3s opacity ease-in-out;
   transition: 0.3s opacity ease-in-out;
 }
 .player-card .player-card-inner .player-card-front .front-player-name-wrap {
   text-align: left;
 }
+.player-card .player-card-inner .player-card-front .front-player-name-wrap p {
+  font-size: 0.7rem;
+}
 .player-card .player-card-inner .player-card-front .phase3-name {
   opacity: 0;
+}
+.player-card .player-card-inner .player-card-front .phase3-name p {
+  letter-spacing: 0;
+  font-size: 0.725rem;
 }
 
 .pitch-grid .pitch-row {
